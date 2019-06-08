@@ -1,0 +1,18 @@
+{
+  "name": "webcam-cast",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Volkan Kahraman",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "getusermedia": "^2.0.1",
+    "opencv-build": "^0.1.3",
+    "opencv4nodejs": "^4.17.0",
+    "socket.io": "^2.2.0"
+  }
+}
