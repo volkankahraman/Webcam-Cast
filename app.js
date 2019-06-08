@@ -1,9 +1,15 @@
+require('console-stamp')(console, { pattern: 'dd/mm/yyyy HH:MM:ss.l' });
 const cv = require('opencv4nodejs');
 var path = require('path');
 var express = require('express');
+const port = process.env.PORT || 3000;
 var app = express();
-var server = app.listen(3000);
+var server = app.listen(port);
+console.log("Sunucu "+port+" portundan dinlenmenilmeye başladı.");
+
 var io = require('socket.io').listen(server);
+
+
 
 function lengthInUtf8Bytes(str) {
     var m = encodeURIComponent(str).match(/%[89ABab]/g);
@@ -11,7 +17,8 @@ function lengthInUtf8Bytes(str) {
 }
 
 const wCap = new cv.VideoCapture(0);
-const FPS = 15;
+
+const FPS = 10;
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
@@ -33,6 +40,8 @@ app.get('/image', function (req, res) {
       });
       res.end(img);
 });
+console.log("Sunucu http://localhost:"+port +" üzerinden webcam yayınına başladı.");
+
 var secoundDataCounter = 0,
     secoundData = 0;
 setInterval(() => {
